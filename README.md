@@ -11,4 +11,4 @@
 * Scheduled 테스트
 
 ### 2020-08-15
-* index.html 
+* index.html 제작
