@@ -1,6 +1,4 @@
-# Team Project 수행
-
-## 팀원을 collaborator로 등록하고 Team Project 수행
+# DRIP BAG PROJECT
 
 ### 2020-08-10
 * Spring MVC 프로젝트로 생성하여 
@@ -9,3 +7,6 @@
 ### 2020-08-13
 * User 로그인 간단한 구현
 * Scheduled 테스트
+
+### 2020-08-15
+* index.html 제작
