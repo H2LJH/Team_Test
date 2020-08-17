@@ -1,79 +1,72 @@
-html,body{
-    height: 100%;
-    /*background-color: #0e1621;*/
-    /*background-color: #1F7DC3;*/
-    margin: 0;
-    padding: 0;
-}
 
 body{
+    background: url(../imgs/SpicyGrandIntermediateegret-size_restricted.gif) no-repeat center center fixed;
+    background-position: center;
+    background-size: contain;
+    background-color: black;
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url(../imgs/run_front_simple_04.gif);
-    background-size: 100%;
+
+    margin:  0;
+    padding: 0;
 }
 
 #title{
-    margin : 10px 0px 20px 0px;
+    margin : 0px 0px 20px 0px;
     color: rgb(245, 237, 226);
 
     font-size: 150px;
     font-family: edo;
 }
 
- #login{
-    width: 35%;
-    height: 65%;
-
+ section
+ {
+    height: 65vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    box-sizing: border-box;
 
+    text-align: center;
     border: ivory solid 2px;
-    color: orange;
-    border-radius: 20px;
-    background-color: rgba(14, 13, 13, 0.6);
-    font-family: Showcard Gothic;
-}
-
-
-#login h1{
-    font-size: 55px;
     color: ivory;
+    border-radius: 10px;
+    background-color: rgba(14, 13, 13, 0.6);
+    font-family: Anton;
 }
 
 .text{
-    margin: 15px;
-    font-size: 20px;
+    margin: 0px 0px 0px 5px;
+    font-size: 15px;
 }
 
 .divLogin{
+    text-align: left;
     width: 90%;
+    height: 10%;
     margin: 10px;
 }
 
 .divLogin input, button{
     width: inherit;
-    height: 30px;
-    margin : 10px 10px;
     border: ivory solid 3px;
-    border-radius: 10px;
-    font-family: Showcard Gothic;
+    color :ivory;
+    border-radius: 5px;
+}
+
+.divLogin input{
+    color: black;
 }
 
 .divLogin button{
-    width: 92%;
-    color :whitesmoke;
-    font-size: 20px;
-}
-
-.divLogin button:hover{
-    cursor: pointer;
-    color: orange;
+    font-family: Anton;
+    margin-top: 15px;
+    padding: auto;
+    width: 94%;
+    font-size: 15px;
 }
 
 #singin{
@@ -84,4 +77,9 @@ body{
 #singup{
     border: rgb(173, 30, 73) solid 3px;
     background-color: rgb(173, 30, 73);
+}
+
+.divLogin button:hover{
+    cursor: pointer;
+    color: rgb(247, 174, 39);
 }
