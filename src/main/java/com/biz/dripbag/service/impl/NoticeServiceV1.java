@@ -1,0 +1,60 @@
+package com.biz.dripbag.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.biz.dripbag.mapper.NoticeDAO;
+import com.biz.dripbag.model.NoticeVO;
+import com.biz.dripbag.service.DateService;
+import com.biz.dripbag.service.NoticeService;
+
+@Service("noticeServiceV1")
+public class NoticeServiceV1 implements NoticeService 
+{	
+	@Autowired
+	NoticeDAO noticeDAO;
+	
+	@Autowired
+	DateService dateService;
+	
+	@Override
+	public List<NoticeVO> selectAll() 
+	{
+		return noticeDAO.selectAll();
+	}
+
+	@Override
+	public NoticeVO findById(Long id) 
+	{		
+		return null;
+	}
+
+	@Override
+	public int insert(NoticeVO vo) 
+	{	
+		vo.setDates(dateService.dateTime()[0]);
+		vo.setTimes(dateService.dateTime()[1]);
+		int ret = noticeDAO.insert(vo);
+		return 0;
+	}
+
+	@Override
+	public int update(NoticeVO vo) 
+	{
+		return 0;
+	}
+
+	@Override
+	public int delete(Long id) 
+	{
+		return 0;
+	}
+
+	@Override
+	public NoticeVO findById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

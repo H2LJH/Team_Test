@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace = "com.biz.dripbag.mapper.NoticeDAO">
+	<select id="selectAll" resultType="noticeVO">
+		SELECT * FROM tbl_notice ORDER BY seq DESC
+	</select>
+	
+	<select id="findById" resultType="noticeVO">
+	</select>
+	
+	<insert id="insert" parameterType="noticeVO">
+		INSERT INTO tbl_notice(seq, writer, dates, times, title, cont, likes, views) 
+		VALUES(seq_notice.NEXTVAL, #{writer}, #{dates}, #{times}, #{title}, #{cont}, #{likes}, #{views})
+	</insert>
+	
+	<update id="update">
+	
+	</update>
+	
+	<delete id="delete">
+	
+	</delete>
+	
+ </mapper>

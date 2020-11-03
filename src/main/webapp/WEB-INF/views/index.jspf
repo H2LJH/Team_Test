@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
+<c:set var="rootPath" value='${pageContext.request.contextPath}'/>
+<link rel="stylesheet" href="${rootPath}/static/css/LJH/index.css?ver=2"/>
+<script src="${rootPath}/static/js/index.js?ver=2"></script>
+
+<!-- ------------------------------------------------------------------------------------------ -->
+<div id="bg-image">
+<img src="${rootPath}/static/imgs/LJH/logo.png" alt="MainLogo" id="MainLogo">
+
+<form action="${rootPath}/user/check/" method="post" id="login_form" autocomplete="off" >
+	<input name="email" type="email"    required= "1" placeholder="Email"/>
+	<input name="pwd"   type="password" required= "1" placeholder="Password"/>
+	<button type="submit">Sing In</button>
+	<button type="button" class="flag_button">Sing Up</button>
+</form>
+</div>
+
+
+<section id="join_body">
+    <h1>Sing Up</h1>
+    <p id="check_id_ptag"></p>
+    <form action="${rootPath}/user/join" method="post" autocomplete="off" >
+    	<div>
+        	<input name="email" type="email"    required="1" placeholder="Email">
+        	<input name="pwd"   type="password" required="1" placeholder="Password">
+        </div> 
+        <button type="submit">JOIN</button>
+        <button type="button" class="flag_button">CANCLE</button>
+    </form>
+</section>

@@ -1,0 +1,98 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="rootPath" value='${pageContext.request.contextPath}' />
+
+<style>
+table {
+	width: 95%;
+	height: 90%;
+	margin: 5px auto;
+	border-collapse: collapse;
+}
+
+table th:nth-child(2), table td:nth-child(2)
+{
+	width: 70%;
+}
+
+tr {
+	height: 5%;
+	border-bottom: 1px solid #ccc;
+}
+
+table tr:nth-child(0n+1) {
+	background-color: #daf1cd;
+}
+
+table tr:hover:nth-child(1n+2) {
+	cursor: pointer;
+	background-color: #f5baa0;
+}
+
+td {
+	text-align: center;
+}
+
+.list_div {
+	margin: 15px auto;
+	text-align: center;
+	padding: 15px 8px;
+}
+</style>
+
+
+<div id="notice_body">
+	<table>
+	<tr>
+		<th>NO</th>
+		<th>제목</th>
+		<th>작성자</th>
+		<th>날짜</th>
+		<th>조회</th>
+		<th>추천</th>
+	</tr>
+			<c:choose>
+				<c:when test="${not empty SearchList}">
+					<c:forEach items="${SearchList}" var="search" end="14" varStatus="i">
+						<tr>
+							<td>${search.SEQ}</td>
+							<td>${search.TITLE}</td>
+							<td>${search.WRITER}</td>
+							<td>${search.DATES}-${search.TIMES}</td>
+							<td>${search.VIEWS}</td>
+							<td>${search.LIKES}</td>
+						</tr>
+						<c:if test="${i.last && i.index < 14}">
+							<c:forEach begin="${i.index}" end="${14}" varStatus="j">
+								<tr>
+									<c:forEach begin="0" end="5"><td></td></c:forEach>
+								</tr>
+							</c:forEach>
+						</c:if>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${NOTICE_LIST}" var="notice" end="14" varStatus="i">
+						<tr>	
+							<td>${notice.seq}</td>
+							<td>${notice.title}</td>
+							<td>${notice.writer}</td>
+							<td>${notice.dates}-${notice.times}</td>
+							<td>${notice.views}</td>
+							<td>${notice.likes}</td>
+						</tr>
+						<c:if test="${i.last && i.index < 14}">
+							<c:forEach begin="${i.index}" end="14">
+								<tr>
+									<c:forEach begin="0" end="5"><td></td></c:forEach>
+								<tr>
+					    	</c:forEach>
+						</c:if>
+				</c:forEach>
+				</c:otherwise>
+			</c:choose>
+	</table>
+</div>
+
+

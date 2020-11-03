@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace = "com.biz.dripbag.mapper.UserDAO">
+	<select id="selectAll" resultType="userVO">
+		select * from tbl_user
+	</select>
+	
+	<select id="findById" resultType="userVO">
+		select * from tbl_user where email = #{email}
+	</select>
+	
+	<select id="findByUser" resultType="userVO">
+		select * from tbl_user where email = #{email} AND pwd = #{pwd}
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO tbl_user(seq, email, pwd, dates) 
+				VALUES (seq_user.NEXTVAL, #{email}, #{pwd}, #{dates})
+	</insert>
+	
+	<update id="update">
+	
+	</update>
+	
+	<delete id="delete">
+	
+	</delete>
+	
+ </mapper>
