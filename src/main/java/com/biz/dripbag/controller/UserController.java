@@ -49,12 +49,15 @@ public class UserController
 	
 	@ResponseBody
 	@RequestMapping(value ={"/check/", "/check"}, method=RequestMethod.GET)
-	public int joinIdCheck(@RequestParam("id") String id, String master)
+	public boolean joinIdCheck(@RequestParam("id") String id, String master)
 	{	
 		if(uService.findById(1, null, id) != null)
-			return 1;
+		{
+			System.out.println("dd");
+			return true;
+		}
 		
-		return 0;
+		return false;
 	}
 	
 	@RequestMapping(value ={"/check", "/check/"}, method=RequestMethod.POST)

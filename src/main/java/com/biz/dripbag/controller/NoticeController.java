@@ -1,5 +1,7 @@
 package com.biz.dripbag.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.biz.dripbag.crawling.CrwalingData;
 import com.biz.dripbag.model.NoticeVO;
+import com.biz.dripbag.service.HitService;
 import com.biz.dripbag.service.NoticeService;
 import com.biz.dripbag.service.SearchService;
 
@@ -26,6 +29,9 @@ public class NoticeController
 	
 	@Qualifier("CrawlingData")
 	private final CrwalingData cService;
+	
+	@Qualifier("hitV1")
+	private final HitService hService;
 				
 	@RequestMapping(value={"/", ""}, method = RequestMethod.GET)
 	public String home(Model model)
@@ -38,11 +44,15 @@ public class NoticeController
 		return "home";
 	}
 		
-	@RequestMapping(value="/detail/{notice_seq}")
-	public String detail(@PathVariable("notice_seq") String seq, Model model)
+	@RequestMapping(value="/detail/{seq}")
+	public String detail(@PathVariable("seq") String seq, Model model, HttpServletRequest req)
 	{
+		long iseq = Long.valueOf(seq);
+		if(hService.hit(req) == true)
+				nService.hit(iseq);
+				
 		model.addAttribute("BODY", "NOTICE_DETAIL");
-		return "LJH/notice_home";
+		return "home";
 	}
 	
 	@RequestMapping(value="/write", method=RequestMethod.GET)

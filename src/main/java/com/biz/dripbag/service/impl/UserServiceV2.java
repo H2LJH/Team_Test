@@ -19,17 +19,17 @@ public class UserServiceV2 extends UserServiceV1
 		switch (flag) 
 		{
 			case 0:
-				if(userDAO.findById(vo.getEmail()) == null);
-					return vo;
+				if(userDAO.findById(vo.getEmail()) == null) return vo = new UserVO();
+				break;
 				
 			case 1:
-				if(userDAO.findById(id) == null)
-					return vo;
-			
+				if(userDAO.findById(id) == null) return vo = new UserVO();
+				break;
+				
 			case 2:
 				vo = userDAO.findByUser(vo.getEmail(), vo.getPwd());
-				if(vo != null)
-					return vo;
+				if(vo != null) return vo;
+				break;
 		}	
 		
 		return null;

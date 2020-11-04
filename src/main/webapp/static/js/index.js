@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function()
 					data : {"id" : id},
 					success : function(data)
 					{
-						if(data == 1)			
+						if(data == true)			
 							$("#check_id_ptag").html("등록 가능한 ID ");
 						else
 							$("#check_id_ptag").html("등록 불가능 ID ");

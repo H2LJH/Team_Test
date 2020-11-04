@@ -14,10 +14,10 @@ import com.biz.dripbag.service.NoticeService;
 public class NoticeServiceV1 implements NoticeService 
 {	
 	@Autowired
-	NoticeDAO noticeDAO;
+	private NoticeDAO noticeDAO;
 	
 	@Autowired
-	DateService dateService;
+	private DateService dateService;
 	
 	@Override
 	public List<NoticeVO> selectAll() 
@@ -37,7 +37,7 @@ public class NoticeServiceV1 implements NoticeService
 		vo.setDates(dateService.dateTime()[0]);
 		vo.setTimes(dateService.dateTime()[1]);
 		int ret = noticeDAO.insert(vo);
-		return 0;
+		return ret;
 	}
 
 	@Override
@@ -56,5 +56,13 @@ public class NoticeServiceV1 implements NoticeService
 	public NoticeVO findById(String id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean hit(long pk) 
+	{
+		long hit = noticeDAO.hit();
+		noticeDAO.updatehit(hit, pk);
+		return false;
 	}
 }

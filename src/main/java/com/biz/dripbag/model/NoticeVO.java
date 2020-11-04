@@ -20,7 +20,7 @@ public class NoticeVO
 	private String title;
 	private String writer;
 	private String cont;
-	private int likes;
-	private int views;
+	private long likes;
+	private long views;
 	
 }
