@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.biz.dripbag.mapper.NoticeDAO;
 import com.biz.dripbag.model.NoticeVO;
-import com.biz.dripbag.service.DateService;
 import com.biz.dripbag.service.NoticeService;
+import com.biz.dripbag.service.sub.DateService;
 
 @Service("noticeServiceV1")
 public class NoticeServiceV1 implements NoticeService 
@@ -61,8 +61,13 @@ public class NoticeServiceV1 implements NoticeService
 	@Override
 	public boolean hit(long pk) 
 	{
-		long hit = noticeDAO.hit();
-		noticeDAO.updatehit(hit, pk);
+		long hit = noticeDAO.hit(pk);
 		return false;
+	}
+
+	@Override
+	public int deletes(String[] pk)
+	{	
+		return noticeDAO.deletes(pk);	
 	}
 }

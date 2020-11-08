@@ -19,26 +19,26 @@ document.addEventListener("DOMContentLoaded", function()
     {
         e.onclick = function()
         { 
-        	sessionStorage.setItem("index", i);
-			sessionStorage.setItem("search", "0");
-			clearSearch();
+        	$.ajax
+    		({
+    			url 		: "${rootPath}/clear/search",
+    			type 		: "GET"
+    		});
+        	if(nav_button[i].value == "user/delete")
+        		{
+        			var text = prompt('본인 EMAIL 입력 하세요'); 
+        			if(text != "${member.email}" || text == null)
+        			{
+        				location.reload();
+        				return false;
+        			}
+        			else
+        				document.location.href = "${rootPath}/" + nav_button[i].value + "/";
+        		}
+        	
 			document.location.href = "${rootPath}/" + nav_button[i].value + "/"; 
         }
 	});
-	
-	
-	function clearSearch()
-	{			
-		let path = window.location.pathname.split("/");	
-		let flag = sessionStorage.getItem("search");
-		$.ajax
-		({
-			url  : "http://localhost:8080/dripbag/any/search/clear",
-			type : "get",
-			data : {"flag" : flag},
-			success : function(data) { sessionStorage.removeItem("search"); }
-		}); 
-	}
 })
 </script>
 <style>
@@ -74,11 +74,20 @@ nav button:hover {
 	background-color: crimson;
 }
 
+#juje {
+	font-size: 15px;
+}
+
+.nav_button p {
+	display: inline;
+}
+
 </style>
 <nav>
-	<button type="button" class="nav_button" value="main" style="background-color: a;">메인화면</button>
+	<button type="button" class="nav_button" value="main" style="background-color: a;"><p>HOME</p><p id="juje">(주제선정)</p></button>
 	<button type="button" class="nav_button" value="halloffame">명예의전당</button>
 	<button type="button" class="nav_button" value="info">사이트 소개</button>
 	<button type="button" class="nav_button" value="notice" id="test">공지사항</button>
 	<button type="button" class="nav_button" value="user/logout">로그아웃</button>
+	<button type="button" class="nav_button" value="user/delete">회원탈퇴</button>
 </nav>

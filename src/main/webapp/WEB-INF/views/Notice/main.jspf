@@ -3,39 +3,37 @@
 <c:set var="rootPath" value = '${pageContext.request.contextPath}'/>
 
 <link rel="stylesheet" href="${rootPath}/static/css/Notice/main.css?ver=1">
+
 <script>
-$(function() 
-{	
+document.addEventListener("DOMContentLoaded", function()
+{		
 	if(${member.roll != 1})
 			$(".notice_nav_btn").eq(0).click(function() { $("#notice_nav > ul li").toggle(); });
 	else
 		{
-			$(".notice_nav_btn").eq(1).click(function() { $("#toggle_div").toggle(); });
+			$("#toggle_div > form button").eq(-1).click(function(){ $("#toggle_div").fadeToggle("slow"); });
+			$(".notice_nav_btn").eq(1).click(function() {  $("#toggle_div").fadeToggle("slow");  });
 			$(".notice_nav_btn").eq(2).click(function() { $("#notice_nav > ul li").toggle(); });
 		}
-	
-	//=====================================================
-	$(".notice_title").click(function() {
-		let seq = $(this).data("seq");
-		document.location.href = "${rootPath}/notice/detail/" + $(this).data("seq");
-	});
+
 	//=====================================================
 		$("#notice_nav > ul li").click(function()
 		{
 			 if($(this).attr("id") == 'gli') 
-				document.location.href = "${rootPath}/gtrand/" + $(this).val();
+				document.location.href = "${rootPath}/gtrand/" + $(this).val() + "/";
 				
 			else
-				document.location.href = "${rootPath}/news/" + $(this).val();
+				document.location.href = "${rootPath}/news/" + $(this).val() + "/";
 		});
-	//=====================================================		
+	//=====================================================			
 });
 </script>
 
 <div id="div_body">	
    <section>
 		<%@ include file="/WEB-INF/views/Notice/list.jspf" %>
-		<div id="toggle_div"><%@ include file="/WEB-INF/views/Notice/write.jspf"%></div>
+		
+		<%@ include file="/WEB-INF/views/Notice/write.jspf"%>
 	</section>  
        
 	<section id=notice_nav>
@@ -49,7 +47,7 @@ $(function()
 		</div>
 		
 			<div>
-				<input class="search_input"placeholder="search">
+				<input class="search_input" placeholder="search">
 				<i class="fas fa-search"></i>
 			</div>
 

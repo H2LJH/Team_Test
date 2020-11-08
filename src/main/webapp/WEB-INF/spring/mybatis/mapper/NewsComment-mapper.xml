@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.biz.dripbag.mapper.NewsCommentDAO">
+
+	<select id="selectAll" resultType="NewsCommentVO">
+		SELECT * FROM tbl_newsComment
+		ORDER BY seq DESC
+	</select>
+
+	<select id="findBySelect" resultType="NewsCommentVO">
+		SELECT * FROM tbl_newsComment
+		WHERE seqj = #{seqj} 
+		ORDER BY seq DESC
+	</select>
+	
+	<select id="selectTop" resultType="NewsCommentVO">
+		SELECT * FROM tbl_newsComment
+		ORDER BY likes DESC
+	</select>
+	
+
+	<select id="findById" resultType="NewsCommentVO">
+		SELECT * FROM tbl_newsComment
+		WHERE seq = #{seq}
+	</select>
+
+	<insert id="insert" parameterType="NewsCommentVO">
+		INSERT INTO tbl_newsComment (
+		seq,
+		seqJ,
+		dates,
+		times,
+		writer,
+		title,
+		cont
+		) VALUES (
+		SEQ_NC.NEXTVAL,
+		#{seqj},
+		#{dates},
+		#{times},
+		#{writer},
+		#{title},
+		#{cont}
+		)
+	</insert>
+
+	<update id="update">
+		UPDATE tbl_newsComment SET
+		title = #{title, jdbcType=VARCHAR},
+		cont  = #{cont,  jdbcType=VARCHAR},
+		dates = #{dates, jdbcType=VARCHAR},
+		times = #{times, jdbcType=VARCHAR}
+		WHERE seq = #{seq, jdbcType=VARCHAR}
+	</update>
+
+	<delete id="delete">
+		DELETE tbl_newsComment WHERE seq = #{seq}
+	</delete>
+
+	<update id="hit">
+		UPDATE tbl_newsComment SET likes = likes+1 WHERE seq = #{seq, jdbcType=VARCHAR}
+	</update>
+
+</mapper>

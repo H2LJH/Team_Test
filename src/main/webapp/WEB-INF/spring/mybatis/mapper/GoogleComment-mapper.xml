@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.biz.dripbag.mapper.GoogleCommentDAO">
+
+	<select id="selectAll" resultType="GoogleCommentVO">
+		SELECT * FROM
+		tbl_googleComment
+		ORDER BY seq DESC
+	</select>
+
+	<select id="selectTop" resultType="GoogleCommentVO">
+		SELECT * FROM
+		tbl_googleComment
+		ORDER BY likes DESC
+	</select>
+
+	<select id="findBySelect" resultType="GoogleCommentVO">
+		SELECT * FROM
+		tbl_googleComment
+		WHERE seqj = #{seqj}
+	</select>
+
+	<select id="selectForForm" resultType="GoogleCommentVO">
+		SELECT * FROM
+		tbl_googleComent
+		WHERE seqJ = #{seqJ}
+		ORDER BY seq DESC
+	</select>
+
+	<select id="findById" resultType="GoogleCommentVO">
+		SELECT * FROM tbl_googleComment
+		WHERE seq = #{seq}
+	</select>
+
+	<insert id="insert">
+		INSERT INTO tbl_googleComment (
+		seq,
+		seqJ,
+		dates,
+		times,
+		writer,
+		title,
+		cont,
+		likes,
+		views
+		) VALUES (
+		SEQ_GC.NEXTVAL,
+		#{seqj},
+		#{dates},
+		#{times},
+		#{writer},
+		#{title},
+		#{cont},
+		0,
+		0
+		)
+	</insert>
+
+	<update id="update">
+		UPDATE tbl_googleComment SET
+		title = #{title,
+		jdbcType=VARCHAR},
+		cont = #{cont, jdbcType=VARCHAR},
+		dates = #{dates,
+		jdbcType=VARCHAR},
+		times = #{times, jdbcType=VARCHAR}
+		WHERE seq = #{seq,
+		jdbcType=VARCHAR}
+	</update>
+
+	<delete id="delete">
+		DELETE tbl_googleComment WHERE seq = #{seq}
+	</delete>
+
+	<update id="hit">
+		UPDATE tbl_googleComment SET likes = likes+1 WHERE
+		seq = #{seq, jdbcType=VARCHAR}
+	</update>
+
+</mapper>
